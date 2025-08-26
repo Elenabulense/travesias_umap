@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Travesías de montaña</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Intro */
+      #intro {
+        padding: 3rem 1rem 1.5rem;
+        text-align: center;
+      }
+      .intro__hed {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin: 0 0 0.5rem 0;
+      }
+      .intro__dek {
+        font-size: 1.1rem;
+        color: #555;
+        margin: 0;
+      }
+
+      /* Layout scrolly */
+      #scrolly {
+        position: relative;
+        display: flex;
+        background-color: #f3f3f3;
+        padding: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      #scrolly > * {
+        flex: 1;
+      }
+
+      /* Columna de texto */
+      article {
+        position: relative;
+        padding: 0 1rem;
+        max-width: 22rem;
+      }
+      .step {
+        margin: 0 auto 1rem auto;
+        background-color: #3b3b3b;
+        color: #fff;
+        padding: 1rem;
+      }
+      .step.is-active {
+        background-color: goldenrod;
+        color: #3b3b3b;
+      }
+      .step h2 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+      .step p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0.5rem 0;
+      }
+      .step ul {
+        padding-left: 1.2rem;
+        margin: 0.5rem 0;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .step li {
+        margin-bottom: 0.3rem;
+      }
+      .step figure {
+        margin: 1rem 0;
+        text-align: center;
+      }
+      .step figure img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+      .step figure figcaption {
+        font-size: 0.85rem;
+        color: #555;
+        margin-top: 0.4rem;
+        font-style: italic;
+      }
+
+      /* Contenedor sticky escritorio */
+      .graphic {
+        position: sticky;
+        top: 20vh;
+        width: 100%;
+        height: 60vh;
+        margin: 0;
+        background: #000;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .graphic iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      /* Mapas en móvil */
+      .mobile-map {
+        display: none;
+        width: 100%;
+        height: 250px;
+        border: none;
+        margin: 0 0 1.5rem 0;
+      }
+
+      /* Outro */
+      #outro {
+        padding: 2rem 1rem 3rem;
+        text-align: center;
+        color: #555;
+      }
+      #outro h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 2rem;
+      }
+
+      /* Cajas finales */
+      .final-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      .final-card {
+        display: block; /* Para que <a> sea bloque */
+        background-color: #ccc;
+        padding: 1rem;
+        text-align: left;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        text-decoration: none; /* quita subrayado */
+        color: inherit; /* mantiene color original */
+      }
+      .final-card:hover {
+        background-color: goldenrod;
+        color: #3b3b3b;
+      }
+      .final-card h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.2rem;
+      }
+      .final-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+      }
+      .final-card figcaption {
+        font-size: 0.85rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+      }
+      .final-card p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      /* Versión móvil */
+      @media (max-width: 768px) {
+        #scrolly {
+          flex-direction: column;
+        }
+        article {
+          max-width: 100%;
+        }
+        .graphic {
+          display: none;
+        }
+        .mobile-map {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="intro">
+        <h1 class="intro__hed">Travesías de montaña</h1>
+        <p class="intro__dek">Montañismo ilustrado</p>
+      </section>
+
+      <section id="scrolly">
+        <article>
+          <!-- Travesía 1 -->
+          <div class="step" data-step="1">
+            <h2>Carros de Foc</h2>
+            <figure>
+              <img src="carros_foc.png" />
+              <figcaption>© Logotipo Carros</figcaption>
+            </figure>
+            <p><strong>Julio de 2019</strong><br>Desnivel: 9200 m<br>Distancia: 65 km</p>
+            <ul>
+              <li>Etapa 1. Restanca - Saboredo</li>
+              <li>Etapa 2. Saboredo - Ernest Mallafré</li>
+              <li>Etapa 3. Ernest Mallafré - Josep María Blanc</li>
+              <li>Etapa 4. Josep María Blanc - Estany Llong</li>
+              <li>Etapa 5. Estany Llong - Ventosa i Calvell</li>
+              <li>Etapa 6. Ventosa i Calvell - Restanca</li>
+            </ul>
+          </div>
+          <iframe class="mobile-map" data-src="index_carros.html"></iframe>
+
+          <!-- Travesía 2 -->
+          <div class="step" data-step="2">
+            <h2>Ruta de las Golondrinas</h2>
+            <figure>
+              <img src="golondrinas.png" />
+              <figcaption>© Logotipo Golondrinas</figcaption>
+            </figure>
+            <p><strong>Septiembre 2021</strong><br>Desnivel: 7000 m<br>Distancia: 62 km</p>
+            <ul>
+              <li>Etapa 1. Belagua - Linza</li>
+              <li>Etapa 2. Linza - Laberouat</li>
+              <li>Etapa 3. Laberouat - Jeandel</li>
+              <li>Etapa 4. Jeandel - Belagua</li>
+            </ul>
+          </div>
+          <iframe class="mobile-map" data-src="index_golondrinas.html"></iframe>
+
+          <!-- Travesía 3 -->
+          <div class="step" data-step="3">
+            <h2>Coronallacs</h2>
+            <figure>
+              <img src="coronallacs.png" alt="Coronallacs" />
+              <figcaption>© Logotipo Coronallacs</figcaption>
+            </figure>
+            <p><strong>Julio de 2022</strong><br>Desnivel: 6000 m<br>Distancia: 92 km</p>
+            <p>Etapas:</p>
+            <ul>
+              <li>Etapa 1. Escaldes Engordany - Lilla</li>
+              <li>Etapa 2. Lilla - Juclar</li>
+              <li>Etapa 3. Juclar - Sorteny</li>
+              <li>Etapa 4. Sorteny - Comapedrosa</li>
+              <li>Etapa 5. Comapedrosa - Escaldes Engordany (último tramo en bus)</li>
+            </ul>
+          </div>
+          <iframe class="mobile-map" data-src="index_coronallacs.html"></iframe>
+
+          <!-- Travesía 4 -->
+          <div class="step" data-step="4">
+            <h2>Alta Ruta de los Perdidos</h2>
+            <figure>
+              <img src="perdidos.png" alt="Logotipo Alta Ruta de los Perdidos" />
+              <figcaption>© Logotipo Alta Ruta de los Perdidos</figcaption>
+            </figure>
+            <p><strong>Julio de 2023</strong><br>Desnivel: 6500 m<br>Distancia: 94 km</p>
+            <p>Etapas:</p>
+            <ul>
+              <li>Etapa 1. Bujaruelo - Góriz</li>
+              <li>Etapa 2. Góriz - Pineta</li>
+              <li>Etapa 3. Pineta - Espuguettes</li>
+              <li>Etapa 4. Espuguettes - La Grange de Holle</li>
+              <li>Etapa 5. La Grange de Holle - Oulettes de Gaube</li>
+              <li>Etapa 6. Oulettes de Gaube - Bujaruelo</li>
+            </ul>
+          </div>
+          <iframe class="mobile-map" data-src="index_altaruta.html"></iframe>
+
+          <!-- Travesía 5 -->
+          <div class="step" data-step="5">
+            <h2>El Anillo de Picos</h2>
+            <figure>
+              <img src="anillo_picos.png" alt="Logotipo Anillo de Picos" />
+              <figcaption>© Logotipo Anillo de Picos</figcaption>
+            </figure>
+            <p><strong>Julio de 2024</strong><br>Desnivel: 7000 m<br>Distancia: 82 km</p>
+            <p>Etapas:</p>
+            <ul>
+              <li>Etapa 1. Poncebos - Vega de Ario</li>
+              <li>Etapa 2. Vega de Ario - Vegarredonda</li>
+              <li>Etapa 3. Vegarredonda - Vegabaño</li>
+              <li>Etapa 4. Vegabaño - Collado Jermoso</li>
+              <li>Etapa 5. Collado Jermoso - Urriellu</li>
+              <li>Etapa 6. Urriellu - Poncebos (último tramo en funicular)</li>
+            </ul>
+          </div>
+          <iframe class="mobile-map" data-src="index_anillo.html"></iframe>
+
+          <!-- Travesía 6 -->
+          <div class="step" data-step="6">
+            <h2>Senda de Camille</h2>
+            <figure>
+              <img src="senda_camille.png" alt="Logotipo Senda de Camille" />
+              <figcaption>© Logotipo Senda de Camille</figcaption>
+            </figure>
+            <p><strong>Julio de 2025</strong><br>Desnivel: 8500 m<br>Distancia: 129 km</p>
+            <p>Etapas:</p>
+            <ul>
+              <li>Etapa 1. Somport (Albergue de Aysa) - Arlet</li>
+              <li>Etapa 2. Arlet - Lescun</li>
+              <li>Etapa 3. Lescun - Linza</li>
+              <li>Etapa 4. Linza - Selva de Oza</li>
+              <li>Etapa 5. Selva de Oza - Gabardito</li>
+              <li>Etapa 6. Gabardito - Lízara</li>
+              <li>Etapa 7. Lízara - Somport</li>
+            </ul>
+          </div>
+          <iframe class="mobile-map" data-src="index_camille.html"></iframe>
+        </article>
+
+        <figure class="graphic">
+          <iframe id="mapFrame" src="index_carros.html"></iframe>
+        </figure>
+      </section>
+
+      <section id="outro">
+        <h2>¿Y la próxima?</h2>
+        <div class="final-cards">
+          <a class="final-card" href="https://www.tourdelaneto.com/">
+            <h3>Tour del Aneto</h3>
+            <img src="tour_aneto.png" alt="Travesía 1">
+            <figcaption>© Logotipo Tour del Aneto</figcaption>
+            <p></p>
+          </a>
+          <a class="final-card" href="https://www.cavallsdelvent.com/">
+            <h3>Cavalls del vent</h3>
+            <img src="cavalls_del_vent.png" alt="Travesía 2">
+            <figcaption>© Logotipo Cavalls del vent</figcaption>
+            <p></p>
+          </a>
+          <a class="final-card" href="https://3000ibones.com/">
+            <h3>3000 ibones</h3>
+            <img src="3000_ibones.png" alt="Travesía 3">
+            <figcaption>© Logotipo 3000 ibones</figcaption>
+            <p></p>
+          </a>
+          <a class="final-card" href="https://buffentrerefugios.com/">
+            <h3>Entre refugios</h3>
+            <img src="entre_refugios.png" alt="Travesía 4">
+            <figcaption>© Logotipo Entre refugios</figcaption>
+            <p></p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js" defer></script>
+    <script src="scrollama.min.js" defer></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const step = d3.selectAll(".step");
+        const scroller = scrollama();
+
+        function handleResize() {
+          scroller.resize();
+        }
+
+        function handleStepEnter(response) {
+          step.classed("is-active", (d, i) => i === response.index);
+
+          if (window.innerWidth > 768) {
+            const urls = [
+              "index_carros.html",
+              "index_golondrinas.html",
+              "index_coronallacs.html",
+              "index_altaruta.html",
+              "index_anillo.html",
+              "index_camille.html"
+            ];
+            document.getElementById("mapFrame").src = urls[response.index];
+          } else {
+            const mobileIframes = document.querySelectorAll(".mobile-map");
+            const iframe = mobileIframes[response.index];
+            if (iframe && !iframe.src) {
+              iframe.src = iframe.dataset.src; // carga solo cuando toca
+            }
+          }
+        }
+
+        function init() {
+          handleResize();
+          scroller
+            .setup({
+              step: "#scrolly article .step",
+              offset: 0.33,
+              debug: false,
+            })
+            .onStepEnter(handleStepEnter);
+          window.addEventListener("resize", handleResize);
+        }
+        init();
+      });
+    </script>
+  </body>
+</html>
